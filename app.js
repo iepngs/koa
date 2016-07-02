@@ -52,7 +52,7 @@ app.use(function* (next){
 	if(typeof this.path === 'undefined')
 		yield next;
 	var appRouter = require('./router/index');
-	appRouter.appRouter(app, this.path);
+	appRouter.appRouter.call(this, app, this.path);
 })
 
 var port = process.env.PORT || 3000;

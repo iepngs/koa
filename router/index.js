@@ -1,5 +1,7 @@
 //var mycontro = require('../controller/mycontro');
 
+var co = require('co')
+
 exports.appRouter = function(app, requrl){
 	var seperateuri = typeof requrl === 'string' ? requrl.split('/') : [];
 	var controller = 'index';
@@ -20,9 +22,9 @@ exports.appRouter = function(app, requrl){
 		if(typeof realfunc === 'function'){
 	console.log(5);
 			app.get('/' + controller + '/' + func, realfunc);
+			return co(realfunc.bind(this))
 		}
 	}
 	console.log(6);
 
 };
-
