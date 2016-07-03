@@ -10,8 +10,9 @@ exports.appRouter = function(app, requrl){
 		controller = seperateuri[1];
 	if(typeof seperateuri[2] !== 'undefined' && !!seperateuri[2])
 		func = seperateuri[2];
-
-	var fullpath = 'D:/Workspace/Bootstrap/koa/controller/' + controller + '.js';
+	var path = require('path');
+	var fullpath = path.resolve('../controller/') + controller + '.js';
+	
 	console.log(1);
 	if(require('fs').existsSync(fullpath)){
 	console.log(2);
