@@ -11,17 +11,12 @@ exports.appRouter = function(app, requrl){
 	if(typeof seperateuri[2] !== 'undefined' && !!seperateuri[2])
 		func = seperateuri[2];
 	var path = require('path');
-	var fullpath = path.resolve('../controller/') + controller + '.js';
+	var fullpath = path.join(path.resolve(__dirname, '../controller/'), controller + '.js');
 	
-	console.log(1);
 	if(require('fs').existsSync(fullpath)){
-	console.log(2);
 		var myContro = require('../controller/' + controller);
-	console.log(3);
 		var realfunc = eval('myContro.' + func);
-	console.log(4);
 		if(typeof realfunc === 'function'){
-	console.log(5);
 			app.get('/' + controller + '/' + func, realfunc);
 			return co(realfunc.bind(this))
 		}

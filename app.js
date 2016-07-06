@@ -22,13 +22,6 @@ app.use(error({
 	template: './error.html'
 }));
 
-/*var minilogger = require('mini-logger');
-app.context.logger = minilogger({
-    dir: config.logDir,
-    format: 'YYYY-MM-DD-[{category}][.log]'
-});*/
-
-
 //xtemplate对koa的适配
 var xtplApp = require('xtpl/lib/koa');
 //xtemplate模板渲染
